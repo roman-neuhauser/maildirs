@@ -1,0 +1,7 @@
+syntax: glob
+
+.*.sw?
+.sw?
+*.core
+commit
+maildirs
