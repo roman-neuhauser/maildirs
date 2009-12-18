@@ -6,7 +6,6 @@
 #include <string>
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
-#include <boost/format.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -31,7 +30,7 @@ main(int argc, char ** argv)
 
     if (1 > argc || 3 < argc) {
         cerr
-            << boost::format("%s [dir] [sep]") % argv[0]
+            << std::string(argv[0]) + " [dir] [sep]"
             << endl
         ;
         return 1;
