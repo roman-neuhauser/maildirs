@@ -1,4 +1,4 @@
-_CXXRT=/usr/local/lib/gcc$(GCCVER)
+_CXXRT?=/usr/local/lib/gcc$(GCCVER)
 _BOOST=/usr/local
 
 IBOOST?=$(_BOOST)/include
