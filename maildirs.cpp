@@ -13,7 +13,8 @@ namespace fs = boost::filesystem;
 bool
 is_maildir(fs::path const & p)
 {
-    return is_directory(p / "cur")
+    return is_directory(p)
+        && is_directory(p / "cur")
         && is_directory(p / "new")
         && is_directory(p / "tmp")
     ;
@@ -50,7 +51,6 @@ main(int argc, char ** argv)
         if (is_maildir(p)) {
             cout << p << sep;
             it.no_push();
-            continue;
         }
     }
     return 0;
