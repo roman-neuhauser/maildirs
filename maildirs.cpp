@@ -30,7 +30,10 @@ main(int argc, char ** argv)
     fs::path top(".");
     std::string sep(" ");
 
-    if (1 > argc || 3 < argc) {
+    if (1 > argc) {
+        return 3;
+    }
+    if (3 < argc) {
         cerr
             << std::string(argv[0]) + " [dir] [sep]"
             << endl
