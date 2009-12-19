@@ -38,7 +38,7 @@ main(int argc, char ** argv)
             << std::string(argv[0]) + " [dir] [sep]"
             << endl
         ;
-        return 1;
+        return 2;
     }
 
     if (1 < argc) top = argv[1];
@@ -46,7 +46,7 @@ main(int argc, char ** argv)
     if ("\\n" == sep) sep = "\n";
 
     if (!is_directory(top)) {
-        return 2;
+        return 1;
     }
 
     fs::recursive_directory_iterator it(top), eod;
