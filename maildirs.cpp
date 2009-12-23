@@ -20,22 +20,28 @@ is_maildir(fs::path const & p)
     ;
 }
 
+void
+usage(std::string const & self)
+{
+    std::cerr
+        << self + " dir [sep]"
+        << std::endl
+    ;
+}
+
 int
 main(int argc, char ** argv)
 {
-    using std::cout;
-    using std::cerr;
-    using std::endl;
-
     if (1 > argc) {
         return 3;
     }
     if (2 > argc || 3 < argc) {
-        cerr
-            << std::string(argv[0]) + " dir [sep]"
-            << endl
-        ;
+        usage(argv[0]);
         return 2;
+    }
+    if (!fs::is_directory(argv[1])) {
+        usage(argv[0]);
+        return 1;
     }
 
     fs::path top(argv[1]);
@@ -44,14 +50,10 @@ main(int argc, char ** argv)
     if (2 < argc) sep = argv[2];
     if ("\\n" == sep) sep = "\n";
 
-    if (!is_directory(top)) {
-        return 1;
-    }
-
     fs::recursive_directory_iterator it(top), eod;
     BOOST_FOREACH(fs::path const & p, std::make_pair(it, eod)) {
         if (is_maildir(p)) {
-            cout << p << sep;
+            std::cout << p << sep;
             it.no_push();
         }
     }
