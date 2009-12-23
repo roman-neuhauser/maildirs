@@ -27,21 +27,20 @@ main(int argc, char ** argv)
     using std::cerr;
     using std::endl;
 
-    fs::path top(".");
-    std::string sep(" ");
-
     if (1 > argc) {
         return 3;
     }
-    if (3 < argc) {
+    if (2 > argc || 3 < argc) {
         cerr
-            << std::string(argv[0]) + " [dir] [sep]"
+            << std::string(argv[0]) + " dir [sep]"
             << endl
         ;
         return 2;
     }
 
-    if (1 < argc) top = argv[1];
+    fs::path top(argv[1]);
+    std::string sep(" ");
+
     if (2 < argc) sep = argv[2];
     if ("\\n" == sep) sep = "\n";
 
