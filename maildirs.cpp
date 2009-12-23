@@ -8,6 +8,8 @@
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
 
+#define foreach BOOST_FOREACH
+
 namespace fs = boost::filesystem;
 
 bool
@@ -51,7 +53,7 @@ main(int argc, char ** argv)
     if ("\\n" == sep) sep = "\n";
 
     fs::recursive_directory_iterator it(top), eod;
-    BOOST_FOREACH(fs::path const & p, std::make_pair(it, eod)) {
+    foreach (fs::path const & p, std::make_pair(it, eod)) {
         if (is_maildir(p)) {
             std::cout << p << sep;
             it.no_push();
