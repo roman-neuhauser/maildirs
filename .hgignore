@@ -3,5 +3,6 @@ syntax: glob
 .*.sw?
 .sw?
 *.core
+bin
 commit
 maildirs

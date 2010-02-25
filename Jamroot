@@ -1,0 +1,21 @@
+project maildirs
+    : default-build release
+;
+
+install install
+    : maildirs
+    : <location>/usr/local/bin
+;
+
+exe maildirs
+    : maildirs.cpp bfs
+    : <include>/usr/local/include
+      <hardcode-dll-paths>false
+      <threading>single
+;
+
+lib bfs
+    :
+    : <name>boost_filesystem
+    : <search>/usr/local/lib
+;
