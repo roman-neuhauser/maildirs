@@ -15,7 +15,7 @@ CXXOPTFLAGS=-O3
 CXXWFLAGS=-Wall -Wextra -Werror -Wfatal-errors
 LCXXRT=$(_CXXRT_$(GCCVER))
 RCXXRT=$(_CXXRT_$(GCCVER))
-LDLIBS=-lboost_filesystem
+LDLIBS=-lboost_filesystem -lboost_system
 
 _CXXRT_=/usr/lib
 _CXXRT_43=/usr/local/lib/gcc43
