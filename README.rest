@@ -1,0 +1,73 @@
+.. vim: ft=rst sts=2 sw=2 tw=77
+.. default-role:: literal
+
+=============================================================================
+                                  Maildirs
+=============================================================================
+-----------------------------------------------------------------------------
+                  Prints maildirs found in a directory tree
+-----------------------------------------------------------------------------
+
+:Author: Roman Neuhauser
+:Contact: neuhauser@sigpipe.cz
+:Copyright: This document is in the public domain.
+
+.. this file is marked up using reStructuredText
+   lines beginning with ".." are reST directives
+   "foo_" or "`foo bar`_" is a link, defined at ".. _foo" or ".. _foo bar"
+   "::" introduces a literal block (usually some form of code)
+   "`foo`" is some kind of identifier
+   suspicious backslashes in the text ("`std::string`\s") are required for
+   reST to recognize the preceding character as syntax
+
+.. contents::
+
+Synopsis
+========
+
+::
+
+  maildirs root [terminator]
+
+
+Description
+===========
+
+`maildirs` prints the path to each `maildir(5)`_ found under `root`,
+followed by `terminator`.  `maildirs` assumes that maildirs do not
+nest, that is, it does not descend into maildirs to find further ones.
+
+`maildirs` takes one or two arguments:
+
+root
+  the tip of the directory tree to trawl
+terminator
+  output after each maildir, defaults to a single space
+
+
+Build and Installation
+======================
+
+Requires GNU make, GCC and a few Boost_ libraries:
+Boost.Filesystem, Boost.Foreach, and Boost.System.
+
+Known to build on or with, presently or at some not too distant past:
+
+* OpenSUSE 12.3, gcc-4.7.2, Boost-1.49
+* OpenSUSE 12.3, clang-3.2, Boost-1.49
+
+.. _Boost: http://boost.org/
+
+Download
+========
+
+Git_ repository: http://github.com/roman-neuhauser/maildirs
+
+.. _Git: http://git-scm.org/
+
+License
+=======
+
+MIT_.
+
+.. _MIT: LICENSE
