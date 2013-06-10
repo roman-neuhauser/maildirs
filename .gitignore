@@ -1,0 +1,6 @@
+.*.sw?
+.sw?
+*.core
+*.o
+/bin
+/maildirs
