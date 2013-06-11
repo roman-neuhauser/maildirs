@@ -26,7 +26,7 @@ void
 usage(std::string const & self)
 {
     std::cerr
-        << self + " dir [sep]"
+        << self + " root [terminator]"
         << std::endl
     ;
 }
@@ -46,16 +46,16 @@ main(int argc, char ** argv)
         return 1;
     }
 
-    fs::path top(argv[1]);
-    std::string sep(" ");
+    fs::path root(argv[1]);
+    std::string term(" ");
 
-    if (2 < argc) sep = argv[2];
-    if ("\\n" == sep) sep = "\n";
+    if (2 < argc) term = argv[2];
+    if ("\\n" == term) term = "\n";
 
-    fs::recursive_directory_iterator it(top), eod;
+    fs::recursive_directory_iterator it(root), eod;
     foreach (fs::path const & p, std::make_pair(it, eod)) {
         if (is_maildir(p)) {
-            std::cout << p << sep;
+            std::cout << p << term;
             it.no_push();
         }
     }
