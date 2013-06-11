@@ -1,0 +1,39 @@
+# norootforbuild
+
+Name:           maildirs
+Version:        __VERSION__
+Release:        0
+License:        MIT
+Summary:        Prints maildirs found in a directory tree
+Url:            https://github.com/roman-neuhauser/%{name}
+Group:          Productivity/File utilities
+Requires:       coreutils
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  boost-devel
+BuildRequires:  coreutils
+BuildRequires:  filesystem
+BuildRequires:  gcc-c++
+BuildRequires:  gzip
+BuildRequires:  make
+BuildRoot:      %_tmppath/%name-%version-build
+
+%define maildirs_make make PREFIX=%{_prefix} MANDIR=%{_mandir}
+
+%description
+Maildirs prints the path to each maildir(5) found under root.
+
+%prep
+%setup -q
+
+%build
+%maildirs_make all
+
+%install
+%maildirs_make install DESTDIR=%{buildroot}
+
+%files
+%defattr(-,root,root)
+%{_bindir}/maildirs
+%{_mandir}/man1/maildirs.1.gz
+
+%changelog
