@@ -1,0 +1,77 @@
+.\" This document is in the public domain.
+.\" vim: fdm=marker
+.
+.\" FRONT MATTER {{{
+.Dd Oct 10, 2012
+.Os
+.Dt MAILDIRS 1
+.
+.Sh NAME
+.Nm maildirs
+.Nd Prints maildirs found in a directory tree
+.\" FRONT MATTER }}}
+.
+.\" SYNOPSIS {{{
+.Sh SYNOPSIS
+.Nm
+.Ar root
+.Op Ar terminator
+.\" SYNOPSIS }}}
+.
+.\" DESCRIPTION {{{
+.Sh DESCRIPTION
+.Nm
+prints the path to each
+.Xr maildir 5
+found under
+.Ar root ,
+followed by
+.Ar terminator .
+.Nm
+assumes that maildirs do not nest, that is, it does not descend into
+maildirs to find further ones.
+.Pp
+.Nm
+accepts one or two arguments:
+.
+.Bl -tag -width "xx"
+.It Ar root
+The tip of the directory tree to trawl.
+.It Op Ar terminator
+Output after each maildir, defaults to a single space.
+.Pq Accepts strings of any length.
+.El
+.Pp
+.
+.\" DESCRIPTION }}}
+.\" .Sh IMPLEMENTATION NOTES
+.\" ENVIRONMENT {{{
+.Sh ENVIRONMENT
+None.
+.\" ENVIRONMENT }}}
+.\" .Sh FILES
+.\" .Sh EXAMPLES
+.\" DIAGNOSTICS {{{
+.Sh DIAGNOSTICS
+.Nm
+exits with
+.Li 0
+on success, and with
+.Li >0
+otherwise.
+.\" DIAGNOSTICS }}}
+.\" .Sh COMPATIBILITY
+.\" .Sh SEE ALSO
+.\" .Sh STANDARDS
+.\" .Sh HISTORY
+.\" AUTHORS {{{
+.Sh AUTHORS
+.
+.Nm
+and this manual page are written by
+.Aq rneuhauser@sigpipe.cz .
+.Pp
+See
+.Aq https://github.com/roman-neuhauser/maildirs .
+.\" AUTHORS }}}
+.\" .Sh BUGS
