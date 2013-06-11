@@ -1,3 +1,14 @@
+PREFIX ?=		/usr/local
+BINDIR ?=		$(PREFIX)/bin
+MANDIR ?=		$(PREFIX)/share/man
+MAN1DIR ?=		$(MANDIR)/man1
+
+GZIP ?=			gzip
+INSTALL ?=		install
+INSTALL_DATA ?=		$(INSTALL) -m 0644
+INSTALL_DIR ?=		$(INSTALL) -m 0755 -d
+INSTALL_PROGRAM ?=	$(INSTALL) -m 0755 -s
+
 _CXXRT?=/usr/lib
 _BOOST?=/usr/local
 GCCVER?=
@@ -22,9 +33,21 @@ _CXXRT_43=/usr/local/lib/gcc43
 _CXXRT_44=/usr/local/lib/gcc44
 _CXXRT_45=/usr/local/lib/gcc45
 
-all: maildirs
+all: maildirs maildirs.1.gz
 
 clean:
-	rm -f maildirs *.o
+	rm -f maildirs maildirs.1.gz *.o
 
-.PHONY: all clean
+maildirs.1.gz: maildirs.1
+	$(GZIP) < $< > $@
+
+install:
+	$(INSTALL_DIR) $(DESTDIR)$(BINDIR)
+	$(INSTALL_DIR) $(DESTDIR)$(MAN1DIR)
+	$(INSTALL_PROGRAM) maildirs $(DESTDIR)$(BINDIR)/maildirs
+	$(INSTALL_DATA) maildirs.1.gz $(DESTDIR)$(MAN1DIR)/maildirs.1.gz
+
+
+.PHONY: all
+.PHONY: clean
+.PHONY: install

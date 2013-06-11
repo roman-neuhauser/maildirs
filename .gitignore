@@ -4,3 +4,4 @@
 *.o
 /bin
 /maildirs
+/maildirs.1.gz
