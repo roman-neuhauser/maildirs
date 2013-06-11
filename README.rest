@@ -43,6 +43,7 @@ root
   the tip of the directory tree to trawl
 terminator
   output after each maildir, defaults to a single space
+  (accepts strings of any length)
 
 
 Build and Installation
