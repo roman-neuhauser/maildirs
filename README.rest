@@ -45,6 +45,7 @@ terminator
   output after each maildir, defaults to a single space
   (accepts strings of any length)
 
+.. _maildir(5): http://qmail.org/man/man5/maildir.html
 
 Build and Installation
 ======================
