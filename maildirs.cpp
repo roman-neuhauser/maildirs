@@ -50,7 +50,9 @@ main(int argc, char ** argv)
     std::string term(" ");
 
     if (2 < argc) term = argv[2];
-    if ("\\n" == term) term = "\n";
+    if ("\\0" == term) term = '\0';
+    if ("\\n" == term) term = '\n';
+    if ("\\t" == term) term = '\t';
 
     fs::recursive_directory_iterator it(root), eod;
     foreach (fs::path const & p, std::make_pair(it, eod)) {
